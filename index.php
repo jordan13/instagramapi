@@ -5,12 +5,12 @@ ini_set('default_socket_timeout', 300);
 session_start();
 
 //Make Constants using define.
-define('clientID', '8be6c304ca794638987d90796e54f299');
-define('clientSecret', '25548e97d1b740b1bb680bf52b579df6');
+define('clientID', '50771717f2b748f1885243a1314e45e4');
+define('clientSecret', '7a500718477047bb9bf53dd130b3b578');
 define('redirectURI', 'http://localhost/appacademyapi/index.php');
 define('ImageDirectory', 'pics/');
 
-if isset(($_GET['code'])) {
+if (isset($_GET['code'])) {
 	$code = ($_GET['code']);
 	$url = 'https://api.instagram.com/oauth/access_token';
 	$access_token_settings = array('client_id' => clientID,
