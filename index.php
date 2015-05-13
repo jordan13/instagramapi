@@ -32,6 +32,18 @@ function getUserID($userName){
 
 	echo $results['data']['0']['id'];
 }
+// Function to print out images onto screen
+function printImages($userID){
+	$url = 'http://api.instagram.com/v1/users/'.$userID.'/media/recent?client_id='.clientID.'&count=5';
+	$instagramInfo = connectToInstagram($url);
+	$results = json_decode($instagramInfo, true);
+	// we are going to parse thorugh the info one by one.
+	foreach($results['data'] as $items){
+		$image_url = $items['images']['low_resolution']['url']; // going through all of my results and give myself back the URL of those pictures because we want to save it in the PHP Server. 
+		echo '<img src=" '.$image_url.' "/><br/>';
+	}
+}
+
 
 if (isset($_GET['code'])) {
 	$code = ($_GET['code']);	$url = 'https://api.instagram.com/oauth/access_token';
@@ -52,8 +64,14 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // but in live work productio
 $result = curl_exec($curl);
 curl_close($curl);
 
+
 $results = json_decode($result, true);
-getUserID($results['user']['username']);
+
+$userName = $results['user']['username'];
+
+$userID = getUserID($userName);
+
+printImages($userId);
 }
 else {
 	
