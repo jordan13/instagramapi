@@ -95,16 +95,25 @@ else {
 	<head>
     	<meta charset="utf-8">
     	<meta name="description" content="">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" type="text/css" href="main.css"> 
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/javascript" href="js/bootstrap.min.js">
+  	    <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Untitled</title>
 		<link rel="stylesheet" type="css/style.css">
 		<link rel="author" href="humans.txt">
 </head>
 <body>
+<div class="wrap">
+	<div class="tl">
+		
+	</div>
+</div>
 	<!-- Creating a login for people to go and give approval for our web app to access their Instagram account 
 	After getting approval, we are now going to have the information so that we can play with it 
 	-->
-	<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
+	<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code"><div class="button"><h1> <center> LOGIN </center> </h1> </div></a>
 	<script src="js/main.js"></script>
 </body>
 </html>
