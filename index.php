@@ -37,6 +37,7 @@ function printImages($userID){
 	$url = 'https://api.instagram.com/v1/users/'.$userID.'/media/recent?client_id='.clientID.'&count=5';
 	$instagramInfo = connectToInstagram($url);
 	$results = json_decode($instagramInfo, true);
+	echo "<a href='https://localhost/appacademyapi/index.php'> Log out </a>";
 	// we are going to parse thorugh the info one by one.
 	 foreach ($results['data'] as $items){
 	 	$image_url = $items['images']['low_resolution']['url']; // going through all of my results and give myself back the URL of those pictures because we want to save it in the PHP Server. 
@@ -47,12 +48,19 @@ function printImages($userID){
 }
 //Function to save image to  server
 function savePictures($image_url){
-		echo $image_url.'<br>';
+		return $image_url.'<br>';
 		$filename = basename($image_url);// the filename is what we are storing. basename is the PHP built in method that we are using to stor $image_url
 		echo $filename . '<br>';
 
 		$destination = ImageDirectory . $filename; // Making sure that the image doesn't exist in the storage.
 		file_put_contents($destination, file_get_contents($image_url));// gets and grabs an imagefile and stores it in our server
+}
+
+function logOut($users){
+	if($clientID = "true"){
+		$url = 'https://instagram.com/login';
+		
+	}
 }
 
 
@@ -113,7 +121,7 @@ else {
 	<!-- Creating a login for people to go and give approval for our web app to access their Instagram account 
 	After getting approval, we are now going to have the information so that we can play with it 
 	-->
-	<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code"><div class="button"><h1> <center> LOGIN </center> </h1> </div></a>
+   <center> <a href="https://api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code"><div class="button"><h1> <center> LOGIN </center> </h1> </div></a> </center> </div>
 	<script src="js/main.js"></script>
 </body>
 </html>
